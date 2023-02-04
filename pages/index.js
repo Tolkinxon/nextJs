@@ -17,9 +17,7 @@ export default function Home() {
       <h2 className="container hover:text-white" style={{ color: 'blue' }}>
         hello world
       </h2>
-      <h2 className="container hover:text-white" style={{ color: 'blue' }}>
-        hello world
-      </h2>
+  
     </div>
   )
 }
