@@ -57,6 +57,7 @@ const PostCard = ({ post }) => {
           </span>
         </Link>
       </div>
+      <h1>hello world</h1>
     </div>
   )
 }
