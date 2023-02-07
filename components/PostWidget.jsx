@@ -27,7 +27,7 @@ const PostWidget = ({ categories, slug }) => {
               alt={post.title}
               width="60px"
               height="60px"
-              className="align-middle rounded-full"
+              className="align-middle rounded-full object-cover"
             />
           </div>
           <div className="transition duration-200 flex-grow ml-4 border-b text-indigo-800 hover:text-indigo-400">
