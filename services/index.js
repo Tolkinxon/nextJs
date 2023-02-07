@@ -61,8 +61,9 @@ const getResentPosts = async () => {
 const getSimilarPosts = async () => {
   const query = gql`
     query getPostDetails($slug: String!, $categories: [String!]) {
-
+      posts(where: { slug_not: $slug, AND {categories_some: {slug_in: $categories}}}
+      last: 3
+      )
     }
-  
   `
 }
