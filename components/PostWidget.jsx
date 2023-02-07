@@ -30,13 +30,11 @@ const PostWidget = ({ categories, slug }) => {
               className="align-middle rounded-full"
             />
           </div>
-          <div className="flex-grow ml-4">
+          <div className="flex-grow ml-4 border-b text-indigo-800 hover:text-indigo-400">
             <p className="text-gray-500 font-xs">
               {moment(post.createdAt).format('MMM DD, YYYY')}
             </p>
-            <Link href={`/post/${post.slug}`} className="text-indigo-500">
-              {post.title}
-            </Link>
+            <Link href={`/post/${post.slug}`}>{post.title}</Link>
           </div>
         </div>
       ))}
