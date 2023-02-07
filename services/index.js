@@ -57,3 +57,12 @@ const getResentPosts = async () => {
 
   return result.posts
 }
+
+const getSimilarPosts = async () => {
+  const query = gql`
+    query getPostDetails($slug: String!, $categories: [String!]) {
+
+    }
+  
+  `
+}
