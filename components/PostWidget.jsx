@@ -30,7 +30,7 @@ const PostWidget = ({ categories, slug }) => {
               className="align-middle rounded-full"
             />
           </div>
-          <div className="flex-grow ml-4 border-b text-indigo-800 hover:text-indigo-400">
+          <div className="transition duration-200 flex-grow ml-4 border-b text-indigo-800 hover:text-indigo-400">
             <p className="text-gray-500 font-xs">
               {moment(post.createdAt).format('MMM DD, YYYY')}
             </p>
