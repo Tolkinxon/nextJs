@@ -1,13 +1,14 @@
-import React from 'react'
-import Linl from 'next/link'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-
-const categories = [
-  { name: 'Praktikum', slug: 'praktikum' },
-  { name: 'Projects', slug: 'projects' },
-]
+import { getCategories } from '@/services'
 
 const Header = () => {
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    getCategories().then((res) => setCategories(res))
+  }, [])
+
   return (
     <div className="container mx-auto px-10 mb-10">
       <div className="border-b w-full inline-block border-blue-500 py-8">
