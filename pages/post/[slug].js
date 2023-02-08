@@ -1,4 +1,11 @@
-import { Categories, PostWidget } from '@/components'
+import {
+  Categories,
+  PostWidget,
+  PostDetail,
+  Comments,
+  Author,
+  CommentsForm,
+} from '@/components'
 import React from 'react'
 
 const postDetails = () => {
