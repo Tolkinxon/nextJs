@@ -1,16 +1,14 @@
-import {
-  Categories,
-  PostWidget,
-  PostDetail,
-  Comments,
-  Author,
-  CommentsForm,
-} from '@/components'
-import { getPostDetails } from '@/services'
+import Categories from '../../components/Categories'
+import PostWidget from '../../components/PostWidget'
+import PostDetail from '../../components/PostDetail'
+import Author from '../../components/Author'
+import CommentsForm from '../../components/CommentsForm'
+import Comments from '../../components/Comments'
+import { getPostDetails } from '../../services'
 
 import React from 'react'
 
-const postDetails = () => {
+const postDetails = ({ post }) => {
   return (
     <div className="container mx-auto px-10 mb-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -21,10 +19,10 @@ const postDetails = () => {
           </div>
         </div>
         <div className="col-span-1 lg:col-span-8">
-          <PostDetail />
-          <Author />
-          <CommentsForm />
-          <Comments />
+          <PostDetail post={post} />
+          <Author author={post.author} />
+          <CommentsForm slug={post.slug}/>
+          <Comments slug={post.slug}/>
         </div>
       </div>
     </div>
@@ -36,7 +34,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      post: data
-    }
+      post: data,
+    },
   }
 }
