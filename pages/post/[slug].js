@@ -6,6 +6,8 @@ import {
   Author,
   CommentsForm,
 } from '@/components'
+import { getPostDetails } from '@/services'
+
 import React from 'react'
 
 const postDetails = () => {
@@ -29,4 +31,12 @@ const postDetails = () => {
   )
 }
 
-export default postDetails
+export async function getStaticProps({ params }) {
+  const data = (await getPostDetails(params.slug)) || []
+
+  return {
+    props: {
+      post: data
+    }
+  }
+}
