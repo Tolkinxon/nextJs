@@ -1,44 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createStore } from 'redux'
+import { createStore, bindActionCreators } from 'redux'
+import { reducer } from './redux/reducer';
+import  * as actions  from './redux/actions';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-let initialState = 0
-const reducer = (state = 0, action) => {
-  switch(action.type){
-    case 'INCREMENT':
-      return state += 1;
-    case 'DECREMENT':
-      return state -= 1
-    case 'RANDOM':
-      return state * action.payload
-  }
-}
 
 const store = createStore(reducer)
+const { dispatch, getState, subscribe} = store
 
-store.subscribe(()=> {
-  console.log(store.getState());
-  document.querySelector('#counter').textContent = store.getState()
+subscribe(()=> {
+  document.querySelector('#counter').textContent = getState().value
 })
 
 
-document.querySelector('#counter  ').textContent = store.getState()
+
+const { incr, decr, random } = bindActionCreators(actions, dispatch)
+
+// const actionCreators = (actions, dispatch) => (...args) => {
+//   dispatch(actions(...args))
+// }
+
+// const handleIncr =  actionCreators(incr, dispatch)
+// const handleDecr = actionCreators(decr, dispatch)
+// const handleRandom = actionCreators(random, dispatch)
+
+
+
 document.querySelector('#increment').addEventListener('click', () => {
-  store.dispatch({type: 'INCREMENT'})
+  incr()
 })
 
 document.querySelector('#decrement').addEventListener('click', () => {
-  store.dispatch({type: 'DECREMENT'})
+  decr()
 })
 
 document.querySelector('#random').addEventListener('click', () => {
   const randomNumber = Math.round(Math.random() * 10)
-  store.dispatch({type: 'RANDOM', payload: randomNumber})
+  random(randomNumber)
 })
 
-
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
   </React.StrictMode>
