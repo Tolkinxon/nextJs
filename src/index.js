@@ -16,14 +16,6 @@ subscribe(()=> {
 
 const { incr, decr, random } = bindActionCreators(actions, dispatch)
 
-// const actionCreators = (actions, dispatch) => (...args) => {
-//   dispatch(actions(...args))
-// }
-
-// const handleIncr =  actionCreators(incr, dispatch)
-// const handleDecr = actionCreators(decr, dispatch)
-// const handleRandom = actionCreators(random, dispatch)
-
 
 
 document.querySelector('#increment').addEventListener('click', () => {
@@ -38,6 +30,7 @@ document.querySelector('#random').addEventListener('click', () => {
   const randomNumber = Math.round(Math.random() * 10)
   random(randomNumber)
 })
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
