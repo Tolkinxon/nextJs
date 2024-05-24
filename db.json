@@ -11,14 +11,8 @@
             "title": "Crash of cars",
             "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur, maiores asperiores voluptatibus velit libero excepturi, recusandae tenetur laboriosam officiis sit porro reprehenderit. Magnam laudantium natus nemo consequatur. Voluptates saepe veniam maxime mollitia facilis consequuntur magnam veritatis ",
             "category": "auto news"
-        },
-        {
-            "id": 3,
-            "title": "New education methods",
-            "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur, maiores asperiores voluptatibus velit libero excepturi, recusandae tenetur laboriosam officiis sit porro reprehenderit. Magnam laudantium natus nemo consequatur. Voluptates saepe veniam maxime mollitia facilis consequuntur magnam veritatis ",
-            "category": "education"
         }
     ],
 
-    "filter": ["education", "auto news", "forecast"]
+    "filters": []
 }

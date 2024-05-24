@@ -1,21 +1,23 @@
 import { useCallback } from "react";
 
 const useHttp = () => {
-    return result = useCallback( async (url, method="GET", body=null, header='Content-Type: application/json') => {
+   const  request = useCallback( async (url, method="GET", body=null, headers={"Content-type": "application/json"}) => {
         try {
-            const response = await fetch(url, { method, body, header })
+            const response = await fetch(url, { method, body, headers })
             if(!response.ok) {
-               throw new Error(`there is problem width ${response.status}`)
+               throw new Error(`there is problem with ${response.status}`)
             }
             else {
-                const data = await response.json()
-                return data
+                return await response.json()
             }
         }    
         catch(e) {
-            console.log(e);
+           console.log(e);
         }    
-    })
+    }, [])
+    return { request }
 }
+
+export { useHttp };
  
-export default useHttp;
+  
