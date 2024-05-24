@@ -1,4 +1,5 @@
 import Loader from './Loader/Loader';
+import NewsItem from './NewsItem';
 import { useHttp } from './../hooks/useHttp'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetching, fetched, fetchingError } from './../redux/actions'
@@ -13,7 +14,6 @@ const NewsList = () => {
     const dispatch = useDispatch()
 
 
-    console.log(fetchingState);
     useEffect(() => {
         dispatch(fetching())
         request('http://localhost:3001/news')
@@ -34,8 +34,8 @@ const NewsList = () => {
             return <h1>This array is empty</h1>
         }
 
-       return arr.map(({id, title}) => {
-            return <h1 className='text-success' key={id}>{title}</h1>
+       return arr.map(({id, ...props}) => {
+            return <NewsItem key={id} {...props}/>
         })
     }
 
@@ -48,11 +48,10 @@ const NewsList = () => {
 
     return ( 
         <>
-            <div className="container news__list">
+            <div className="container d-flex flex-column news__list gap-2" >
                 <h1 className="text-primary">
                     NewsList
                 </h1>
-               
                 { elements }
             </div>
         </>

@@ -6,9 +6,9 @@
     box-sizing: border-box;
 }
 
-body {
+
+.App {
     max-width: 100vw;
-    height: 100vh;
     background-image: url('./assets/bg.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -19,24 +19,8 @@ body {
     max-width: 1300px;
     width: 100%;
 }
-.news {
-    &__list {
-        border: 2px solid red;
-    }
 
-    &__filter {
-        border: 2px solid blue;
-    }
-
-    &__add-form {
-        border: 2px solid green;
-    }
-}
 .content {
     display: grid;
     grid-template-columns: 500px 450px;
-
-    &__inputs {
-        border: 2px solid darkorchid;
-    }
 }
