@@ -16,16 +16,19 @@ const App = () => {
         <>
         {fetchingState === 'error' ? (<Error />) :
             (
-                <div className='App'>
-                <NavBar />
-                <div className='content container'>
-                    <NewsList />
-                        <div className='content__inputs'>
-                          <NewsAddForm />
-                          <NewsFilter />
+                <>
+                    <div className='background'></div>
+                    <div className='App'>
+                        <NavBar />
+                        <div className='content container'>
+                            <NewsList />
+                            <div className='content__inputs'>
+                            <NewsAddForm />
+                            <NewsFilter />
+                            </div>
                         </div>
-                   </div>
-                </div>
+                    </div>
+                </>
             )
         }
         </>
