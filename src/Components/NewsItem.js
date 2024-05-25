@@ -3,11 +3,14 @@ import sportNewsImage from './../assets/sport.png'
 import edutNewsImage from './../assets/edu.jpg'
 import weatherNewsImage from './../assets/weather.jpg'
 import allNewsImage from './../assets/news.jpg'
+import { v4 } from "uuid";
 
 const NewsItem = ({title, category, description}) => {
 
     let style = {}
     let imgCopy = null
+
+    console.log(v4);
 
     switch(category){
         case 'forecast':

@@ -35,7 +35,13 @@
 
 
 .content {
+    margin-top: 30px;
     display: grid;
     grid-template-columns: 500px 450px;
+    justify-content: center;
+    gap: 40px;
+    &__inputs {
+        padding-top: 70px;
+    }
 }
 

@@ -49,8 +49,8 @@ const NewsList = () => {
     return ( 
         <>
             <div className="container d-flex flex-column news__list gap-2" >
-                <h1 className="text-primary">
-                    NewsList
+                <h1 className="text-danger text-center">
+                    Breaking news
                 </h1>
                 { elements }
             </div>
