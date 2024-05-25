@@ -10,7 +10,7 @@
 .container {
     max-width: 1300px;
     width: 100%;
-    color:  darkslateblue;
+    color: #222c76;
 }
 
 
@@ -35,13 +35,15 @@
 
 
 .content {
-    margin-top: 30px;
     display: grid;
     grid-template-columns: 500px 450px;
     justify-content: center;
     gap: 40px;
     &__inputs {
         padding-top: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 

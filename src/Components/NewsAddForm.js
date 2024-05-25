@@ -1,7 +1,7 @@
 
 const NewsAddForm = () => {
     return ( 
-        <div className="news__add-form">
+        <div className="news__add-for w-100 mb-4">
             <form className=" border shadow-lg rounded-2 p-4 d-flex flex-column gap-4">
                 <div>
                     <label className="fw-bold text-white mb-1" for="title">Title name</label>
@@ -16,16 +16,15 @@ const NewsAddForm = () => {
                 </div>
 
                <div>
-                    <label className="fw-bold text-white mb-1" for="description">
+                    <label className="fw-bold text-white mb-1" for="category">
                         Category
                     </label>
-                    <select className="form-select">
+                    <select className="form-select" id="category">
                         <option>choose category</option>
                     </select>
                </div>
                 
                 <button className="w-100 btn btn-dark" type="submit">Add news</button>
-
             </form>
         </div>
      );

@@ -1,7 +1,7 @@
-import { addListener } from "@reduxjs/toolkit";
 import sportNewsImage from './../assets/sport.png'
 import edutNewsImage from './../assets/edu.jpg'
 import weatherNewsImage from './../assets/weather.jpg'
+import avtoNewsImage from './../assets/avto.jpg'
 import allNewsImage from './../assets/news.jpg'
 import { v4 } from "uuid";
 
@@ -10,27 +10,34 @@ const NewsItem = ({title, category, description}) => {
     let style = {}
     let imgCopy = null
 
-    console.log(v4);
+    console.log(v4());
 
     switch(category){
         case 'forecast':
             imgCopy = weatherNewsImage;
             style = {
-                backgroundColor: "rgba(0, 200, 0, 0.700)"
+                backgroundColor: "#0dcaf0af"
             };
             break;
 
         case 'sport':
             imgCopy = sportNewsImage;
             style = {
-                backgroundColor: "rgba(50,150, 100, 0.700)"
+                backgroundColor: "#dc3545af"
             };
             break;
 
          case 'education':
             imgCopy = edutNewsImage;
             style = {
-                backgroundColor: "rgba(0, 0, 100, 0.700)"
+                backgroundColor: "#ffc107af"
+            };
+            break;
+
+        case 'avto':
+            imgCopy = avtoNewsImage;
+            style = {
+                backgroundColor: "#198754af"
             };
             break;
 
@@ -38,7 +45,7 @@ const NewsItem = ({title, category, description}) => {
         default:
             imgCopy = allNewsImage;
             style = {
-                backgroundColor: "rgba(0, 0, 0, 0.700)"
+                backgroundColor: "#212529af"
             }
     }
 
@@ -53,7 +60,7 @@ const NewsItem = ({title, category, description}) => {
                 <p className="text-white fw-medium">{description}</p>
 
                 <button className="position-absolute top-0 end-0"  type="button" >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="darkslateblue" width="25" height="25" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#222c76" width="25" height="25" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
                 </button>
             </div>
 
