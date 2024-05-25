@@ -3,14 +3,18 @@ import edutNewsImage from './../assets/edu.jpg'
 import weatherNewsImage from './../assets/weather.jpg'
 import avtoNewsImage from './../assets/avto.jpg'
 import allNewsImage from './../assets/news.jpg'
-import { v4 } from "uuid";
+import { useSelector, useDispatch } from 'react-redux'
+import { deletingItem } from './../redux/actions'
 
-const NewsItem = ({title, category, description}) => {
+const NewsItem = ({title, category, description, id}) => {
+
+    const news = useSelector(state => state.news)
+    const dispatch = useDispatch()
 
     let style = {}
     let imgCopy = null
 
-    console.log(v4());
+
 
     switch(category){
         case 'forecast':
@@ -34,7 +38,7 @@ const NewsItem = ({title, category, description}) => {
             };
             break;
 
-        case 'avto':
+        case 'auto':
             imgCopy = avtoNewsImage;
             style = {
                 backgroundColor: "#198754af"
@@ -49,21 +53,25 @@ const NewsItem = ({title, category, description}) => {
             }
     }
 
+    const idItem = () => {
+        const idItem = news.findIndex(item => item.id == id)
+        news.splice(+idItem, 1)
+        dispatch(deletingItem(news))
+    }
+
 
 
 
     return ( 
-        <li className="d-flex  gap-3 align-items-center p-2 rounded-3" style={style}>
+        <li className="d-flex  gap-3 align-items-center p-2 rounded-3 position-relative" style={style}>
             <img className="rounded rounded-4" src={imgCopy} alt="news image" width={100} height={100} style={{objectFit: "cover"}}/>
-            <div className="position-relative">
+            <div>
                 <h3 className="text-white">{title}</h3>
                 <p className="text-white fw-medium">{description}</p>
-
-                <button className="position-absolute top-0 end-0"  type="button" >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="#222c76" width="25" height="25" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
-                </button>
             </div>
-
+            <button className="position-absolute top-0 end-0 m-2"  type="button" onClick={idItem} >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#222c76" width="25" height="25" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+            </button>
         </li>
      );
 }

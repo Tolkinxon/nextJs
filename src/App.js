@@ -9,7 +9,7 @@ import NewsFilter from './Components/NewsFilter';
 
 const App = () => {
 
-    const { news, fetchingState } = useSelector(state => state)
+    const fetchingState = useSelector(state => state.fetchingState)
     console.log(fetchingState);
 
     return (

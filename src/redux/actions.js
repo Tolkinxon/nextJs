@@ -1,3 +1,6 @@
 export const fetching = () => ({ type: 'FETCHING' })
 export const fetched = ( data ) => ({ type: 'FETCHED', payload: data  })
 export const fetchingError = () => ({ type: 'FETCHING_ERROR'})
+export const addData = (data) => ({ type: 'ADD_DATA', payload: data})
+export const deletingItem = (id) => ({ type: 'SETTING_NEW_ARRAY', payload: id})
+export const filteringItems = (id) => ({ type: 'SETTING_FILTERED_ARRAY', payload: id})

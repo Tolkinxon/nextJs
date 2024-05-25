@@ -10,16 +10,17 @@ import { useEffect } from 'react';
 const NewsList = () => {
 
     const { request } = useHttp()
-    const { news, fetchingState } = useSelector(state => state)
+    const { news, fetchingState, filteredNews } = useSelector(state => state)
     const dispatch = useDispatch()
 
-
+    
     useEffect(() => {
         dispatch(fetching())
         request('http://localhost:3001/news')
             .then(data => dispatch(fetched(data)))
             .catch(() => dispatch(fetchingError()))
     }, [])
+
 
     if(fetchingState == 'loading') {
         return  <Loader />
@@ -35,15 +36,15 @@ const NewsList = () => {
         }
 
        return arr.map(({id, ...props}) => {
-            return <NewsItem key={id} {...props}/>
+            return <NewsItem key={id} id={id} {...props}/>
         })
     }
+    let elements = renderNewsItems(news)
 
-    const elements = renderNewsItems(news)
+    console.log(news);
 
 
-
-
+   
 
 
     return ( 
