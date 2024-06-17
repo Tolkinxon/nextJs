@@ -28,9 +28,40 @@
             "id": 4,
             "title": "New gen created",
             "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur, maiores asperiores voluptatibus velit libero excepturi, recusandae tenetur laboriosam officiis sit porro reprehenderit. Magnam laudantium natus nemo consequatur. ",
-            "category": "all"
+            "category": "all-type"
         }
     ],
 
-    "filters": []
+    "filters": [
+        {
+            "label": "All",
+            "categoryName": "all",
+            "color": "bg-secondary"
+        },   
+        {
+            "label": "Auto",
+            "categoryName": "auto",
+            "color": "bg-success"
+        },
+        {
+            "label": "Forecast",
+            "categoryName": "forecast",
+            "color": "bg-info"
+        },
+        {
+            "label": "Sport",
+            "categoryName": "sport",
+            "color": "bg-danger"
+        },
+        {
+            "label": "Education",
+            "categoryName": "education",
+            "color": "bg-warning"
+        },
+        {
+            "label": "All type",
+            "categoryName": "all-type",
+            "color": "bg-dark"
+        }
+    ]
 }

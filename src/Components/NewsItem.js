@@ -14,8 +14,6 @@ const NewsItem = ({title, category, description, id}) => {
     let style = {}
     let imgCopy = null
 
-
-
     switch(category){
         case 'forecast':
             imgCopy = weatherNewsImage;

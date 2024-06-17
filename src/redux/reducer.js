@@ -1,47 +1,68 @@
 const initialState = {
-    staticNews:[],
     news: [],
+    newsFetchingState: '',
     filters: [],
-    fetchingState: 'loading'
+    filtersFetchingState: '',
+    activeCategory: 'all',
+    filteredNews: []
 }
 
 export const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'FETCHING': 
+        case 'NEWS_FETCHING': 
             return {
                 ...state,
-                fetchingState: 'loading'
-
+                newsFetchingState: 'loading'
             }
-        case 'FETCHED': 
+        case 'NEWS_FETCHED': 
+                return {
+                    ...state,
+                    newsFetchingState: 'loaded',
+                    news: action.payload,
+                    filteredNews: state.activeCategory == 'all' ? action.payload : action.payload.filter(item => 
+                        item.category == state.activeCategory)
+                }
+        case 'NEWS_FETCHING_ERROR': 
+                return {
+                    ...state,
+                    newsFetchingState: 'error'
+                }
+        case 'FILTERS_FETCHING': 
             return {
                 ...state,
-                news: action.payload,
-                staticNews: action.payload,
-                fetchingState: 'loaded'
+                filtersFetchingState: 'loading'
             }
-        case 'FETCHING_ERROR': 
+        case 'FILTERS_FETCHED': 
             return {
                 ...state,
-                fetchingState: 'error'
+                filters: action.payload,
+                filtersFetchingState: 'loaded'
+            }
+        case 'FILTERS_FETCHING_ERROR': 
+            return {
+                ...state,
+                filtersFetchingState: 'error'
             }
         case 'ADD_DATA': 
-            const newData = [ action.payload,...state.staticNews ]
+            const newData = [ action.payload,...state.news ]
             return {
                 ...state,
                 news: newData,
-                staticNews: newData
+                filteredNews: state.activeCategory == 'all' ? newData : newData.filter(item => item.category == state.activeCategory)
             }
-        case 'SETTING_NEW_ARRAY': 
+        case 'DELETING_ITEM': 
             return {
                 ...state,
                 news: action.payload,
-                staticNews: action.payload
+                filteredNews: state.activeCategory == 'all' ? action.payload : action.payload.filter(item => 
+                    item.category == state.activeCategory)
             }
-        case 'SETTING_FILTERED_ARRAY': 
+        case 'CHANGE_ACTIVE_CATEGORY': 
             return {
                 ...state,
-                news: action.payload
+                activeCategory: action.payload,
+                filteredNews: action.payload == 'all' ? state.news : state.news.filter(item => 
+                    item.category == action.payload)
             }
         default:
             return state

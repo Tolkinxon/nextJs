@@ -1,34 +1,40 @@
 import { useSelector, useDispatch } from "react-redux";
-import { filteringItems } from "../redux/actions";
+import { filtersFetching, filtersFetched, filtersFetchingError, 
+         changeActiveCategory } from "../redux/actions";
 import { useEffect } from "react";
+import { useHttp } from './../hooks/useHttp'
+import classNames from "classnames";
+
 
 const NewsFilter = () => {
-
-    
-
-    const staticNews = useSelector(state => state.staticNews)
+    const filters = useSelector(state => state.filters)
+    const activeCategory = useSelector(state => state.activeCategory)
     const dispatch = useDispatch()
+    const { request } = useHttp()
+
+    useEffect(() => {
+        dispatch(filtersFetching())
+        request('http://localhost:3001/filters')
+            .then(data => dispatch(filtersFetched(data)))
+            .catch(() => dispatch(filtersFetchingError()))
+    })
 
 
-
-    const takingCategory = (e) => {
-        let selectedCategory = e.target.textContent
-        selectedCategory = selectedCategory == 'All' ? '' : selectedCategory
-        const pattern = new RegExp(selectedCategory, 'gi')
-        const filteredArr = staticNews.filter(item => item.category.match(pattern))
-        dispatch(filteringItems(filteredArr))
-    }
+    const elements = filters.map(({label, categoryName, color }) => {
+        const btnClasses = classNames('btn','text-white', color, {
+            'active': categoryName == activeCategory
+        })
+        return <button type="button" className={btnClasses} onClick={() => dispatch(changeActiveCategory(categoryName))}>{ label }</button>
+    })
 
 
 
     return ( 
         <div className="news__filter w-100 d-flex justify-content-center">
-            <div className="btn-group w-100" onClick={(e) => takingCategory(e)}>
-                <button type="button" className="btn btn-dark avtive">All</button>
-                <button type="button" className="btn btn-info">forecast</button>
-                <button type="button" className="btn btn-danger">sport</button>
-                <button type="button" className="btn btn-warning">education</button>
-                <button type="button" className="btn btn-success">auto</button>
+            <div className="btn-group w-100">
+                {
+                  elements  
+                }
             </div>
         </div>
     );

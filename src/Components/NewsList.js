@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 const NewsList = () => {
 
     const { request } = useHttp()
-    const { news, fetchingState, filteredNews } = useSelector(state => state)
+    const { fetchingState, filteredNews } = useSelector(state => state)
     const dispatch = useDispatch()
 
     
@@ -19,6 +19,7 @@ const NewsList = () => {
         request('http://localhost:3001/news')
             .then(data => dispatch(fetched(data)))
             .catch(() => dispatch(fetchingError()))
+        
     }, [])
 
 
@@ -39,13 +40,7 @@ const NewsList = () => {
             return <NewsItem key={id} id={id} {...props}/>
         })
     }
-    let elements = renderNewsItems(news)
-
-    console.log(news);
-
-
-   
-
+    let elements = renderNewsItems(filteredNews)
 
     return ( 
         <>
