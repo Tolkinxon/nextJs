@@ -4,7 +4,6 @@ const initialState = {
     filters: [],
     filtersFetchingState: '',
     activeCategory: 'all',
-    filteredNews: []
 }
 
 export const reducer = (state = initialState, action) => {
@@ -42,19 +41,18 @@ export const reducer = (state = initialState, action) => {
                 filtersFetchingState: 'error'
             }
         case 'ADD_DATA': 
-            const newData = [ action.payload,...state.news ]
             return {
                 ...state,
-                news: newData,
+                news: [ action.payload,...state.news ],
             }
         case 'DELETING_ITEM': 
             return {
                 ...state,
-                news: action.payload,
+                news: state.news.filter(item => item.id !== action.payload),
             }
         case 'CHANGE_ACTIVE_CATEGORY': 
             return {
-                ...state,
+                ...state,   
                 activeCategory: action.payload,
             }
         default:

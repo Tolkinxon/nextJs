@@ -52,9 +52,7 @@ const NewsItem = ({title, category, description, id}) => {
     }
 
     const idItem = () => {
-        const idItem = news.findIndex(item => item.id == id)
-        news.splice(+idItem, 1)
-        dispatch(deletingItem(news))
+        dispatch(deletingItem(id))
     }
 
 
