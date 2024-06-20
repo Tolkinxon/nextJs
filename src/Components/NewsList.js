@@ -10,7 +10,16 @@ import { useEffect } from 'react';
 const NewsList = () => {
 
     const { request } = useHttp()
-    const { fetchingState, filteredNews } = useSelector(state => state)
+    const fetchingState  = useSelector(state => state.fetchingState)
+    const filteredNews  = useSelector(state => {
+        if(state.activeCategory == 'all'){
+            return state.news
+        }
+        else {
+            return state.news.filter(item => 
+                item.category == state.activeCategory)
+        }
+    })
     const dispatch = useDispatch()
 
     
