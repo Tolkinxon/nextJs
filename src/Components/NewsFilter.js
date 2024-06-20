@@ -7,8 +7,8 @@ import classNames from "classnames";
 
 
 const NewsFilter = () => {
-    const filters = useSelector(state => state.filters)
-    const activeCategory = useSelector(state => state.activeCategory)
+    const filters = useSelector(state => state.filters.filters)
+    const activeCategory = useSelector(state => state.filters.activeCategory)
     const dispatch = useDispatch()
     const { request } = useHttp()
 

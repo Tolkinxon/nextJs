@@ -8,7 +8,6 @@ import { deletingItem } from './../redux/actions'
 
 const NewsItem = ({title, category, description, id}) => {
 
-    const news = useSelector(state => state.news)
     const dispatch = useDispatch()
 
     let style = {}

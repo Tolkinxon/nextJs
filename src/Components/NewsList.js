@@ -4,22 +4,28 @@ import { useHttp } from './../hooks/useHttp'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetching, fetched, fetchingError } from './../redux/actions'
 import { useEffect } from 'react';
+import { createSelector } from 'reselect';
 
 
 
 const NewsList = () => {
 
     const { request } = useHttp()
-    const fetchingState  = useSelector(state => state.fetchingState)
-    const filteredNews  = useSelector(state => {
-        if(state.activeCategory == 'all'){
-            return state.news
+    const fetchingState  = useSelector(state => state.news.fetchingState)
+    const filteredNewsWdthReselect  = createSelector(
+        state => state.news.news,
+        state => state.filtes.activeCategory,
+        (news, activeCategory) => {
+            if(activeCategory == 'all'){
+                return news
+            }
+            else {
+                return news.filter(item => item.category == activeCategory)
+            }
         }
-        else {
-            return state.news.filter(item => 
-                item.category == state.activeCategory)
-        }
-    })
+    )
+
+    const filteredNews  = useSelector(filteredNewsWdthReselect)
     const dispatch = useDispatch()
 
     

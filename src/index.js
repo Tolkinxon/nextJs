@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App'
-import { reducer } from './redux/reducer'
+import { news } from './redux/reducers/news';
+import { filters } from './redux/reducers/filters';
 import { Provider } from 'react-redux';  
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 
-const store = createStore(reducer)
+const store = createStore(combineReducers({ news, filters }))
  
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
