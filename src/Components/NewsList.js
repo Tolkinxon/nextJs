@@ -13,14 +13,14 @@ const NewsList = () => {
     const { request } = useHttp()
     const fetchingState  = useSelector(state => state.news.fetchingState)
     const filteredNewsWdthReselect  = createSelector(
-        state => state.news.news,
-        state => state.filtes.activeCategory,
-        (news, activeCategory) => {
-            if(activeCategory == 'all'){
+        (state) => state.filters.activeCategory,
+        (state) => state.news.news,
+        (filter, news) => {
+            if(filter == 'all'){
                 return news
             }
             else {
-                return news.filter(item => item.category == activeCategory)
+                return news.filter(item => item.category == filter)
             }
         }
     )
